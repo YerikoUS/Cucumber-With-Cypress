@@ -17,35 +17,23 @@ class MainPage {
     }
 
     static departmensCheck(departments){
-
+        const lista = []
         cy.xpath("//li/a[contains(@class,'hmenu-item')]")
 .each(($list) => {
   const nombre = $list.text()
-  if(departments.includes(nombre))
-  {
-    switch(nombre){
-      case 'Electrónicos' :
-        cy.expect(nombre).to.equal('Electrónicos')
-      break
 
-      case 'Computadoras' :
-        cy.expect(nombre).to.equal('Computadoras')
-      break
-
-      case 'Smart Home' :
-        cy.expect(nombre).to.equal('Smart Home')
-      break
-
-      case 'Arte y Artesanías' :
-        cy.expect(nombre).to.equal('Arte y Artesanías')
-      break
-
-      case 'Testing Element' :
-        cy.expect(nombre).to.equal('Testing Element')
-      break
-    }
+  if(departments.includes(nombre)){
+    lista.push(nombre)
   }
+}).then(_ => {
+  departments.forEach(item => {
+    cy.log(lista.includes(item))
+    cy.expect(lista.includes(item)).to.be.true
+  })
 })
+
+
+
     }
 
 
