@@ -1,0 +1,6 @@
+{
+  "baseUrl": "https://reqres.in",
+  "endpoint": "/api/users",
+  "deleteEndpoint": "/api/users/",
+  "putEndpoint": "/api/users/"
+}
